@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
+import { TestUncontrolledInput } from "./TestUncontrolledInput";
 
 function WindowPortal({ children, close }) {
   const containerNode = document.createElement("div");
@@ -40,6 +41,7 @@ export function WindowPortalDemo() {
         <WindowPortal close={close}>
           <TestInput />
           <TestSelect />
+          <TestUncontrolledInput />
         </WindowPortal>
       )}
     </>

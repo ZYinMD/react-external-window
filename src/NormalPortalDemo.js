@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
+import { TestUncontrolledInput } from "./TestUncontrolledInput";
 
 function NormalPortal({ children }) {
   const redBox = document.getElementById("normal-portal");
@@ -28,6 +29,7 @@ export function NormalPortalDemo() {
         <NormalPortal>
           <TestInput />
           <TestSelect />
+          <TestUncontrolledInput />
         </NormalPortal>
       )}
     </div>
