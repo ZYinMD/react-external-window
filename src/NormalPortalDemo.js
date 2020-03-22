@@ -18,10 +18,10 @@ export function NormalPortalDemo() {
   }
 
   return (
-    <>
+    <div>
+      <p>normal portal appears inside the red box↓:</p>
       <button onClick={open}>open normal portal</button>
       <button onClick={close}>close normal portal</button>
-      <div>normal portal appears inside the red box↓:</div>
       <div id="normal-portal"></div>
 
       {isPortalOpen && (
@@ -30,6 +30,6 @@ export function NormalPortalDemo() {
           <TestSelect />
         </NormalPortal>
       )}
-    </>
+    </div>
   );
 }

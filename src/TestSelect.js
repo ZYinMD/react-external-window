@@ -9,7 +9,6 @@ export function TestSelect() {
   return (
     <>
       <h1>test input:</h1>
-
       <form>
         <label>
           The onChange event doesn't fire in external window:
