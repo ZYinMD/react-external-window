@@ -3,8 +3,9 @@ import React, { useState } from "react";
 export function TestInput() {
   const [value, setValue] = useState("");
   function handleChange(event) {
-    console.log("event:\n\t", event); // this doesn't fire in external window
-    setValue(event.target.value);
+    console.log("onChange!!"); // this doesn't fire in external window
+    const newValue = event.target.value;
+    setValue(newValue);
   }
   function handleSubmit(event) {
     alert("current value of input is: " + value);

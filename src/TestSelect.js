@@ -3,8 +3,9 @@ import React, { useState } from "react";
 export function TestSelect() {
   const [value, setValue] = useState("lime");
   function handleChange(event) {
-    alert("You selected " + event.target.value);
-    setValue(event.target.value);
+    const newValue = event.target.value;
+    alert("You selected " + newValue);
+    setValue(newValue);
   }
   return (
     <>
