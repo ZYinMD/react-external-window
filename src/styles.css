@@ -1,0 +1,10 @@
+#normal-portal {
+  height: 430px;
+  width: 430px;
+  border: 1px solid red;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 20px;
+}
