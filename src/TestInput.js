@@ -8,7 +8,7 @@ export function TestInput() {
     setValue(newValue);
   }
   function handleSubmit(event) {
-    alert("current value of input is: " + value);
+    console.log("current value of input is: " + value);
     event.preventDefault();
   }
   return (

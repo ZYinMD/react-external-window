@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 
 export function TestUncontrolledInput() {
-  const input = useRef(null);
+  const inputNode = useRef(null);
 
   function handleSubmit(event) {
-    console.log("input.current.value:\n\t", input.current.value);
+    console.log("inputNode.current.value:\n\t", inputNode.current.value);
     event.preventDefault();
   }
 
@@ -13,8 +13,8 @@ export function TestUncontrolledInput() {
       <h1>test uncontrolled input:</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
-          <input type="text" ref={input} />
+          This should have no issues:
+          <input type="text" ref={inputNode} />
         </label>
         <input type="submit" value="Submit" />
       </form>
