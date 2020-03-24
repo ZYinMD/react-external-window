@@ -24,31 +24,35 @@ class WindowPortal extends Component {
   }
 }
 
-export function WindowPortalDemo() {
-  const [isOpen, setIsOpen] = useState(false);
-  function open() {
+export class WindowPortalDemo extends Component {
+  state = {
+    isOpen: false
+  };
+  open = () => {
     // if it's already open, probably in the background, bring it to the front:
-    if (isOpen) {
+    if (this.state.isOpen) {
       const externalWindow = window.open("", "myWindow2"); // if "myWindow2" already exists, will find it, it not, will create it
       externalWindow.focus();
-    } else setIsOpen(true);
+    } else this.setState({ isOpen: true });
+  };
+  close = () => {
+    this.setState({ isOpen: false });
+  };
+  render() {
+    return (
+      <>
+        <p>external portal will appears in a new window:</p>
+        <button onClick={this.open}>open portal in external window</button>
+        <button onClick={this.close}>close portal in external window</button>
+        {this.state.isOpen && (
+          <WindowPortal close={this.close}>
+            <TestInput />
+            <TestSelect />
+            <TestUncontrolledInput />
+            <TestUncontrolledSelect />
+          </WindowPortal>
+        )}
+      </>
+    );
   }
-  function close() {
-    setIsOpen(false);
-  }
-  return (
-    <>
-      <p>external portal will appears in a new window:</p>
-      <button onClick={open}>open portal in external window</button>
-      <button onClick={close}>close portal in external window</button>
-      {isOpen && (
-        <WindowPortal close={close}>
-          <TestInput />
-          <TestSelect />
-          <TestUncontrolledInput />
-          <TestUncontrolledSelect />
-        </WindowPortal>
-      )}
-    </>
-  );
 }
