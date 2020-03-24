@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
 import { TestUncontrolledInput } from "./TestUncontrolledInput";
 import { TestUncontrolledSelect } from "./TestUncontrolledSelect";
 
-function WindowPortal({ children, close }) {
-  const containerNode = document.createElement("div");
-  useEffect(() => {
-    const externalWindow = window.open("", "myWindow2", "foo");
-    externalWindow.document.body.appendChild(containerNode);
-    // if the window is closed by the OS, close the portal
-    externalWindow.addEventListener("beforeunload", close);
+class WindowPortal extends Component {
+  containerNode = document.createElement("div");
 
-    return () => {
-      externalWindow.close();
-      close();
-    };
-  });
-  return ReactDOM.createPortal(children, containerNode);
+  componentDidMount() {
+    this.externalWindow = window.open("", "myWindow2", "foo");
+    this.externalWindow.document.body.appendChild(this.containerNode);
+    // if the window is closed by the OS, close the portal
+    this.externalWindow.addEventListener("beforeunload", this.props.close);
+  }
+
+  componentWillUnmount() {
+    this.props.close();
+  }
+
+  render() {
+    return ReactDOM.createPortal(this.props.children, this.containerNode);
+  }
 }
 
 export function WindowPortalDemo() {
