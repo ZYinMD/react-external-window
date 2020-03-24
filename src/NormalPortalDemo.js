@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
@@ -10,30 +10,34 @@ function NormalPortal({ children }) {
   return ReactDOM.createPortal(children, redBox); // this is where the magic happens, check DOCs of react portal
 }
 
-export function NormalPortalDemo() {
-  const [isPortalOpen, setIsPortalOpen] = useState(false);
-  function open() {
-    setIsPortalOpen(true);
-  }
-  function close() {
-    setIsPortalOpen(false);
-  }
+export class NormalPortalDemo extends Component {
+  state = {
+    isPortalOpen: false
+  };
+  open = () => {
+    this.setState({ isPortalOpen: true });
+  };
+  close = () => {
+    this.setState({ isPortalOpen: false });
+  };
 
-  return (
-    <div>
-      <p>normal portal appears inside the red box↓:</p>
-      <button onClick={open}>open normal portal</button>
-      <button onClick={close}>close normal portal</button>
-      <div id="normal-portal"></div>
+  render() {
+    return (
+      <div>
+        <p>normal portal appears inside the red box↓:</p>
+        <button onClick={this.open}>open normal portal</button>
+        <button onClick={this.close}>close normal portal</button>
+        <div id="normal-portal"></div>
 
-      {isPortalOpen && (
-        <NormalPortal>
-          <TestInput />
-          <TestSelect />
-          <TestUncontrolledInput />
-          <TestUncontrolledSelect />
-        </NormalPortal>
-      )}
-    </div>
-  );
+        {this.state.isPortalOpen && (
+          <NormalPortal>
+            <TestInput />
+            <TestSelect />
+            <TestUncontrolledInput />
+            <TestUncontrolledSelect />
+          </NormalPortal>
+        )}
+      </div>
+    );
+  }
 }
