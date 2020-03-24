@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
-import { TestUncontrolledInput } from "./TestUncontrolledInput";
-import { TestUncontrolledSelect } from "./TestUncontrolledSelect";
 
 function NormalPortal({ children }) {
   const redBox = document.getElementById("normal-portal");
@@ -33,8 +31,6 @@ export class NormalPortalDemo extends Component {
           <NormalPortal>
             <TestInput />
             <TestSelect />
-            <TestUncontrolledInput />
-            <TestUncontrolledSelect />
           </NormalPortal>
         )}
       </div>

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { TestInput } from "./TestInput";
 import { TestSelect } from "./TestSelect";
-import { TestUncontrolledInput } from "./TestUncontrolledInput";
-import { TestUncontrolledSelect } from "./TestUncontrolledSelect";
 
 class WindowPortal extends Component {
   containerNode = document.createElement("div");
@@ -48,8 +46,6 @@ export class WindowPortalDemo extends Component {
           <WindowPortal close={this.close}>
             <TestInput />
             <TestSelect />
-            <TestUncontrolledInput />
-            <TestUncontrolledSelect />
           </WindowPortal>
         )}
       </>
